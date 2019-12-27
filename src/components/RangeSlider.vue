@@ -20,12 +20,12 @@ export default {
 	},
 	mounted() {
 		const vm = this;
-		const value = 50;
+		const value = 40;
 		const rangeSlider = new Rangeable('input', {
 			type: "single",
 			tooltips: false,
-			min: 0,
-			max: 100,
+			min: 10,
+			max: 70,
 			step: 1,
 			value: value,
 			vertical: false,
@@ -33,14 +33,14 @@ export default {
 			onInit: () =>  {
 				// do something when the instance has loaded
 				vm.range = value;
-				this.$store.commit('change', value);
+				vm.$store.commit('change', value);
 			},
 			onStart: () =>  {
 				// do something on mousedown/touchstart
 			},
 			onChange: () =>  {
 				vm.range = rangeSlider.getValue();
-				this.$store.commit('change', parseInt(rangeSlider.getValue()));
+				vm.$store.commit('change', parseInt(rangeSlider.getValue()));
 
 			},
 			onEnd: () =>  {
@@ -57,6 +57,7 @@ export default {
 $range-body: #31313d;
 $range-body-fill: #58a5ff;
 $handle-body-color: #d6d6d8;
+$handle-body-active-color: #58a5ff;
 $handle-border-color: #ffffff;
 $bar-size: 8px;
 $handle-border: 8px;
@@ -103,8 +104,10 @@ $handle-size: 28px;
 		border: $handle-border solid $handle-border-color;
 		border-radius: 50%;
 		background-color: $handle-body-color;
+		transition: background-color 0.2s ease-in-out;
 
 		&.active {
+			background-color: $handle-body-active-color;
 			z-index: 10;
 		}
 	}
