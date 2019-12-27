@@ -91,16 +91,18 @@ export default {
 
 						sketch.push();
 						sketch.translate(
-							(i * pixel.container) - (1 * blockSize) ,
-							(j * pixel.container) - (1 * blockSize)
+							(i * blockSize) - (1 * blockSize) ,
+							(j * blockSize) - (1 * blockSize)
 						);
 
 						if (this.shape === "rect") {
+							sketch.rectMode(sketch.CENTER)
 							sketch.rect(pixel.container, pixel.container, pixel.size * pixel.variation, pixel.size * pixel.variation);
 						} else {
-							// sketch.ellipse(pixelSize, pixelSize, (pixel.size) * pixel.variation, (pixel.size) * pixel.variation);
+							sketch.ellipseMode(sketch.CENTER)
 							sketch.ellipse(pixel.container, pixel.container, pixel.size * pixel.variation, pixel.size * pixel.variation);
 						}
+
 						sketch.updatePixels();
 						sketch.pop();
 
