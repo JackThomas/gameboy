@@ -6,6 +6,7 @@
 
 <script>
 import VueP5 from "vue-p5";
+// import image from "../assets/test.jpg";
 import image from "../assets/test-2.png";
 
 export default {
