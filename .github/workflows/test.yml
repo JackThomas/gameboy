@@ -27,3 +27,11 @@ jobs:
         npm test --if-present
       env:
         CI: true
+    - name: Deploy to Server
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        LOCAL_DIR: dist
+        ARGS: --transfer-all
